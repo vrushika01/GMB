@@ -212,6 +212,12 @@ document.getElementById("searchBox").addEventListener("input", function (e) {
                   }),
                 }
               ).addTo(map);
+              // Add tooltip to the individual port marker
+            portMarker.bindTooltip(result.name, {
+              permanent: false, // Tooltip appears only on hover
+              direction: "top", // Position the label above the marker
+              offset: [0, -40], // Move label slightly above the marker
+            });
               highlightedMarkers.push(portMarker);
             });
             // Show popup for the group of ports
