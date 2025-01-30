@@ -95,7 +95,7 @@ const portsData = {
             "properties": {
                 "name": "Veraval Port group",
                 "info": "Veraval, a fair weather lighterage port is located in the South west coast of Saurashtra on the west coast of India.",
-                "detailsPage":"Veraval.html"
+                "detailsPage":"veraval.html"
             },
             "geometry": {
                 "type": "Point",
@@ -139,7 +139,7 @@ const portsData = {
             "properties": {
                 "name": "Jafrabad Port group",
                 "info": "Jafrabad is an all weather direct berthing port located inside Jafrabad creek in the Gulf of Cambay on the south coast of Saurashtra.",
-                "detailsPage":"Jafrabad.html"
+                "detailsPage":"jafrabad.html"
             },
             "geometry": {
                 "type": "Point",
@@ -163,7 +163,7 @@ const portsData = {
             "properties": {
                 "name": "Bhavnagar Port group",
                 "info": "Bhavnagar is an all weather berthing port for smaller vessels located in the Gulf of Cambay on the west coast of India.",
-                "detailsPage":"Bhavnagar.html"
+                "detailsPage":"bhavnagar.html"
             },
             "geometry": {
                 "type": "Point",
@@ -188,7 +188,7 @@ const portsData = {
             "properties": {
                 "name": "Magdalla Port group",
                 "info": "Magdalla is a lighterage port located on the west coast of India in southern Gujarat. It is located on the bank of river Tapi.",
-                "detailsPage":"Magdalla.html"
+                "detailsPage":"magdalla.html"
             },
             "geometry": {
                 "type": "Point",
@@ -257,7 +257,7 @@ const portsData = {
             "properties": {
                 "name": "Okha Port group",
                 "info": "Okha is an all weather port with direct berthing facilities located on the north-west coast of Saurashtra Peninsula.",
-                "detailsPage":"Okha.html"
+                "detailsPage":"okha.html"
             },
             "geometry": {
                 "type": "Point",
@@ -286,7 +286,7 @@ const portsData = {
             "properties": {
                 "name": "Bharuch Port group",
                 "info": "Dahej is a fair weather lighterage port located at the junction of Guljaria and Ban Creek, on the west coast of the country, at Gulf of Cambay.",
-                "detailsPage":"Dahej.html"
+                "detailsPage":"dahej.html"
             },
             "geometry": {
                 "type": "Point",
