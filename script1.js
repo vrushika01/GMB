@@ -21,13 +21,13 @@ function clearHighlightedMarkers() {
 function showPopup(portName, portInfo, detailsPage) {
   const popup = document.getElementById("popup");
   const popupContent = document.getElementById("popupContent");
+  const iframeHeight = window.innerHeight * 0.7; // Set height to 70% of the viewport height
 
   popupContent.innerHTML = `
     <p><strong>Port Name:</strong> ${portName}</p>
     <p><strong>Details:</strong> ${portInfo}</p>
-    <iframe src="${detailsPage}" style="width:100%; height:400px; border:none; margin-top:10px;"></iframe>
-    
-  `;      
+    <iframe src="${detailsPage}" style="width:100%; height:${iframeHeight}px; border:none; margin-top:10px;"></iframe>
+  `;
   popup.style.display = "block";
 }
 
@@ -39,35 +39,35 @@ function closePopup() {
 
 // Function to add individual port markers with a different color
 function addIndividualPortMarkers(ports) {
-    ports.forEach((port) => {
-      const marker = L.marker([port.coordinates[1], port.coordinates[0]], {
-        icon: L.icon({
-          iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // Marker icon
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
-          // Custom color for individual port markers
-          className: "individual-port-marker", // Added custom class for styling
-        }),
-      }).addTo(map);
-      highlightedMarkers.push(marker);
-  
-      // Add tooltip to individual port markers
-      marker.bindTooltip(port.name, {
-        permanent: false,
-        direction: "top",
-        offset: [0, -40],
-      })
-       // Add click event to show popup when an individual port is clicked
-       marker.on("click", function () {
-        showPopup(port.name, port.info, port.detailsPage);
+  ports.forEach((port) => {
+    const marker = L.marker([port.coordinates[1], port.coordinates[0]], {
+      icon: L.icon({
+        iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // Marker icon
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        // Custom color for individual port markers
+        className: "individual-port-marker", // Added custom class for styling
+      }),
+    }).addTo(map);
+    highlightedMarkers.push(marker);
+
+    // Add tooltip to individual port markers
+    marker.bindTooltip(port.name, {
+      permanent: false,
+      direction: "top",
+      offset: [0, -40],
     });
-});
+    //    // Add click event to show popup when an individual port is clicked
+    //    marker.on("click", function () {
+    //     showPopup(port.name, port.info, port.detailsPage);
+    // });
+  });
 }
 
 // Add ports data to the map
 L.geoJSON(portsData, {
   onEachFeature: function (feature, layer) {
-    const { name, info,detailsPage } = feature.properties;
+    const { name, info, detailsPage } = feature.properties;
 
     layer.on("click", function () {
       const coordinates = feature.geometry.coordinates;
@@ -77,11 +77,11 @@ L.geoJSON(portsData, {
         map.flyTo([coordinates[1], coordinates[0]], 10, { duration: 1.5 });
       }
 
-//If the feature is a group, display individual ports
-if (feature.ports && Array.isArray(feature.ports)) {
-    clearHighlightedMarkers(); // Clear any previous highlights
-    addIndividualPortMarkers(feature.ports); // Add individual port markers
-  }
+      //If the feature is a group, display individual ports
+      if (feature.ports && Array.isArray(feature.ports)) {
+        clearHighlightedMarkers(); // Clear any previous highlights
+        addIndividualPortMarkers(feature.ports); // Add individual port markers
+      }
 
       // Show the popup with port details
       showPopup(name, info, detailsPage);
@@ -179,44 +179,70 @@ document.getElementById("searchBox").addEventListener("input", function (e) {
         listItem.textContent = result.name;
 
         listItem.addEventListener("click", function () {
-          map.flyTo([result.coordinates[1], result.coordinates[0]], result.isGroup ? 10 : 12, { duration: 1.5 });
+          map.flyTo(
+            [result.coordinates[1], result.coordinates[0]],
+            result.isGroup ? 10 : 12,
+            { duration: 1.5 }
+          );
 
           if (result.isGroup) {
-            const groupMarker = L.marker([result.coordinates[1], result.coordinates[0]], {
-              icon: L.divIcon({
-                className: "highlighted-group",
-                html: `<div style="background-color: blue; width: 14px; height: 14px; border-radius: 50%;"> </div>`,
-                iconSize: [14, 14],
-                iconAnchor: [7, 7],
-              }),
-            }).addTo(map);
+            const groupMarker = L.marker(
+              [result.coordinates[1], result.coordinates[0]],
+              {
+                icon: L.divIcon({
+                  className: "highlighted-group",
+                  html: `<div style="background-color: blue; width: 14px; height: 14px; border-radius: 50%;"> </div>`,
+                  iconSize: [14, 14],
+                  iconAnchor: [7, 7],
+                }),
+              }
+            ).addTo(map);
             highlightedMarkers.push(groupMarker);
 
             result.group.ports.forEach((port) => {
-              const portMarker = L.marker([port.coordinates[1], port.coordinates[0]], {
+              const portMarker = L.marker(
+                [port.coordinates[1], port.coordinates[0]],
+                {
+                  icon: L.icon({
+                    iconUrl:
+                      "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    className: "individual-port-marker",
+                  }),
+                }
+              ).addTo(map);
+              highlightedMarkers.push(portMarker);
+            });
+            // Show popup for the group of ports
+            showPopup(result.name, result.info, result.detailsPage);
+          } else {
+            // Add only an individual port marker
+            const portMarker = L.marker(
+              [result.coordinates[1], result.coordinates[0]],
+              {
                 icon: L.icon({
-                  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+                  iconUrl:
+                    "https://cdn-icons-png.flaticon.com/512/684/684908.png",
                   iconSize: [25, 41],
                   iconAnchor: [12, 41],
                   className: "individual-port-marker",
                 }),
-              }).addTo(map);
-              highlightedMarkers.push(portMarker);
+              }
+            ).addTo(map);
+            
+            // Add tooltip to the individual port marker
+            portMarker.bindTooltip(result.name, {
+              permanent: false, // Tooltip appears only on hover
+              direction: "top", // Position the label above the marker
+              offset: [0, -40], // Move label slightly above the marker
             });
-          } else {
-            const portMarker = L.marker([result.coordinates[1], result.coordinates[0]], {
-              icon: L.icon({
-                iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-                className: "individual-port-marker",
-              }),
-            }).addTo(map);
+            
             highlightedMarkers.push(portMarker);
           }
-
-          // Show popup for the selected port (same as when clicking a port)
-          showPopup(result.name, result.info, result.detailsPage);
+          // (no popup)
+          // // Show popup for the selected individual port (same as when clicking a port)
+          // showPopup(result.name, result.info, result.detailsPage);
 
           resultsList.style.display = "none";
         });
@@ -237,7 +263,7 @@ function closePopup() {
   const popup = document.getElementById("popup");
   popup.style.display = "none";
   clearHighlightedMarkers();
-  
+
   // Reset map view to default coordinates
   map.setView([22.2587, 71.1924], 7);
 }
