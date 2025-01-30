@@ -5,50 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Display Port Information</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-
-      .port-list {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .port-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px;
-        border-bottom: 1px solid #ccc;
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: bold;
-      }
-
-      .port-item:hover {
-        background-color: #f1f1f1;
-      }
-
-      .port-details {
-        display: none;
-        padding: 10px;
-        background: #f9f9f9;
-        border-left: 4px solid #007bff;
-        margin-bottom: 10px;
-      }
-
-      .arrow {
-        font-size: 18px;
-        transition: transform 0.3s ease;
-      }
-
-      .expanded .arrow {
-        transform: rotate(90deg);
-      }
-    </style>
+    <link rel="stylesheet" href="jetty.css" />
   </head>
   <body>
     <h1>Port Information</h1>
