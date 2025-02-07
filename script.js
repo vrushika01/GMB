@@ -53,7 +53,7 @@ function addIndividualPortMarkers(ports) {
 
     // Add tooltip to individual port markers
     marker.bindTooltip(port.name, {
-      permanent: false,
+      permanent: true,
       direction: "top",
       offset: [0, -40],
     });
@@ -89,7 +89,7 @@ L.geoJSON(portsData, {
 
     // Show label on hover
     layer.bindTooltip(name, {
-      permanent: false, // Tooltip appears only on hover
+      permanent: true, // Tooltip appears only on hover
       direction: "top", // Position the label above the marker
       offset: [0, -40], // Move label slightly above the marker
       opacity: 1.0, // Slight transparency for better visibility
@@ -197,6 +197,7 @@ document.getElementById("searchBox").addEventListener("input", function (e) {
                 }),
               }
             ).addTo(map);
+            
             highlightedMarkers.push(groupMarker);
 
             result.group.ports.forEach((port) => {
@@ -213,8 +214,8 @@ document.getElementById("searchBox").addEventListener("input", function (e) {
                 }
               ).addTo(map);
               // Add tooltip to the individual port marker
-            portMarker.bindTooltip(result.name, {
-              permanent: false, // Tooltip appears only on hover
+            portMarker.bindTooltip(port.name, { // to display individual port name
+              permanent: true, // Tooltip appears only on hover
               direction: "top", // Position the label above the marker
               offset: [0, -40], // Move label slightly above the marker
             });
@@ -239,7 +240,7 @@ document.getElementById("searchBox").addEventListener("input", function (e) {
 
             // Add tooltip to the individual port marker
             portMarker.bindTooltip(result.name, {
-              permanent: false, // Tooltip appears only on hover
+              permanent: true, // Tooltip appears only on hover
               direction: "top", // Position the label above the marker
               offset: [0, -40], // Move label slightly above the marker
             });
