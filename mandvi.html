@@ -1,128 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Display Port Information</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
-    <link rel="stylesheet" href="jetty.css" />
-  </head>
-  <body>
-    <h1>Port Information</h1>
-    <ul id="dataContainer" class="port-list"></ul>
 
-    <script>
-      function loadExcelData(filePath) {
-        fetch(filePath)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.arrayBuffer();
-          })
-          .then((data) => {
-            let workbook = XLSX.read(data, { type: "array" });
-            let sheetName = workbook.SheetNames[0];
-            let sheet = workbook.Sheets[sheetName];
-            let jsonData = XLSX.utils.sheet_to_json(sheet);
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Display Port Information</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="jetty.css" />
+</head>
 
-            let output = "";
-            jsonData.forEach((port, index) => {
-              let portName = port["Name of Port"] || "Unknown Port";
-              output += `
+<body>
+  <h4>Traffic Details</h4>
+  <table>
+    <tr>
+      <th>2017-18</th>
+      <th>2018-19</th>
+      <th>2019-20</th>
+      <th>2020-21</th>
+      <th>2021-22</th>
+      <th>2022-23</th>
+      <th>2023-24</th>
+    </tr>
+    <tr>
+      <td>1185.5</td>
+      <td>1137.68</td>
+      <td>1355.47</td>
+      <td>1402.95</td>
+      <td>1476.38</td>
+      <td>1492.99</td>
+      <td>1757.18</td>
+    </tr>
+  </table>
+  <h1>Port Information</h1>
+  <ul id="dataContainer" class="port-list"></ul>
+
+  <script>
+    function loadExcelData(filePath) {
+      fetch(filePath)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.arrayBuffer();
+        })
+        .then((data) => {
+          let workbook = XLSX.read(data, { type: "array" });
+          let sheetName = workbook.SheetNames[0];
+          let sheet = workbook.Sheets[sheetName];
+          let jsonData = XLSX.utils.sheet_to_json(sheet);
+
+          let output = "";
+          jsonData.forEach((port, index) => {
+            let portName = port["Name of Port"] || "Unknown Port";
+            output += `
                 <li class="port-item" onclick="toggleDetails(${index})">
                   <span>${portName}</span>
                   <span class="arrow">➤</span>
                 </li>
                 <div class="port-details" id="details-${index}">
-                  <h2>${port["Name of Port"] || "Unknown Port"}</h2>
-                            <p><strong>Group of Port:</strong> ${
-                              port["Group of Ports"] || "N/A"
-                            }</p>
-                            <p><strong>Port:</strong> ${
-                              port["Name of Port"] || "N/A"
-                            }</p>
-                            <p><strong>Jetty Type:</strong> ${
-                              port["Type of Jetty"] || "N/A"
-                            }</p>
-                            <p><strong>Jetty Name:</strong> ${
-                              port["Name of Jetty"] || "N/A"
-                            }</p>
-                            <p><strong>Port Officer:</strong> ${
-                               "A.S.Shah"
-                            }</p>
-                            <p><strong>Owner:</strong> ${
-                              port["Port Owner (Government/Private)"] || "N/A"
-                            }</p>
-                            <p><strong>Cargo Handled:</strong> ${
-                              port["Name of Cargo Handeled Port"] || "N/A"
-                            }</p>
-                            <p><strong>Status:</strong> ${
-                              port["Operational/Non-Operational"] || "N/A"
-                            }</p>
-                            <p><strong>Name of Berths:</strong> ${
-                              port["Name of Berths/SBM/SPM:"] || "N/A"
-                            }</p>
-                            <p><strong>Types of Berths:</strong> ${
-                              port["Types of Berths/SBM/SPM:"] || "N/A"
-                            }</p>
-                            <p><strong>Max Draft:</strong> ${
-                              port["Maximum Permissible Draft"] || "N/A"
-                            }</p>
-                            <p><strong>Capacity(in MMTPA):</strong> ${
-                              port["Capacity (in MMTPA)"] || "N/A"
-                            }</p>
-                            <p><strong>Anchorage Points:</strong> ${
-                              port["Anchorage Points:"] || "N/A"
-                            }</p>
-                            <p><strong>Open storage Area:</strong> ${
-                              port["Open storage Area:"] || "N/A"
-                            }</p>
-                            <p><strong>Covered Storage Facilities:</strong> ${
-                              port["Covered Storage Facilities:"] || "N/A"
-                            }</p>
-                            <p><strong>Specialized Storage Facilities:</strong> ${
-                              port["Specialized Storage Facilities:"] || "N/A"
-                            }</p> 
-                            <p><strong>Road Connectivity:</strong> ${
-                              port["Road Connectivity:"] || "N/A"
-                            }</p>
-                            <p><strong>Rail Connectivity:</strong> ${
-                              port["Rail Connectivity:"] || "N/A"
-                            }</p>
-                             <p><strong>Port control centre Contact:</strong> ${
-                              port["Port Control Centre Contact:"] || "N/A"
-                            }</p>
-                            <p><strong>Emergency Contact:</strong> ${
-                              port["Emergency Contact Details:"] || "N/A"
-                            }</p>
-                </div>
+    <h2>${port["Name of Jetty"] || "Unknown Port"}</h2>
+    <p><strong>Group of Ports:</strong> ${port["Group of Ports"] || "N/A"}</p>
+    <p><strong>Port:</strong> ${port["Name of Port"] || "N/A"}</p>
+    <p><strong>Type of Jetty:</strong> ${port["Type of Jetty"] || "N/A"}</p>
+    <p><strong>Name of Jetty:</strong> ${port["Name of Jetty"] || "N/A"}</p>
+    <p><strong>Name of Cargo Handled:</strong> ${port["Name of Cargo Handeled Port"] || "N/A"}</p>
+    <p><strong>Port Owner:</strong> ${port["Port Owner (Government/Private)"] || "N/A"}</p>
+    <p><strong>Operational Status:</strong> ${port["Operational/Non-Operational"] || "N/A"}</p>
+    <p><strong>Name of Port/Sub Port:</strong> ${port["Name of Port/Sub Port"] || "N/A"}</p>
+    <p><strong>Types of Berths/SBM/SPM:</strong> ${port["Types of Berths/SBM/SPM:"] || "N/A"}</p>
+    <p><strong>Types of Cargo:</strong> ${port["Types of cargo types"] || "N/A"}</p>
+    <p><strong>Maximum Permissible Draft:</strong> ${port["Maximum Permissible Draft"] || "N/A"}</p>
+    <p><strong>Length Overall (LOA) and Beam:</strong> ${port["Length Overall (LOA) and Beam:"] || "N/A"}</p>
+    <p><strong>Capacity (in MMTPA):</strong> ${port["Capacity (in MMTPA)"] || "N/A"}</p>
+    <p><strong>Water Supplier:</strong> ${port["Water Supplier:"] || "N/A"}</p>
+    <p><strong>Bunker Supplier:</strong> ${port["Bunker Supplier:"] || "N/A"}</p>
+    <p><strong>Waste Receivers:</strong> ${port["Waste Receivers:"] || "N/A"}</p>
+    <p><strong>Ship Repairers:</strong> ${port["Ship Repairers:"] || "N/A"}</p>
+    <p><strong>Ship Surveyors:</strong> ${port["Ship Surveyors:"] || "N/A"}</p>
+    <p><strong>Shipping Agencies:</strong> ${port["Shipping Agencies:"] || "N/A"}</p>
+    <p><strong>Stevedores:</strong> ${port["Stevedores:"] || "N/A"}</p>
+    <p><strong>Custom House Agents:</strong> ${port["Custom House Agents:"] || "N/A"}</p>
+    <p><strong>Other Relevant Port Users:</strong> ${port["Other Relevant Port Users:"] || "N/A"}</p>
+    <p><strong>Clearing Agency:</strong> ${port["Clearing Agency:"] || "N/A"}</p>
+    <p><strong>Transportation/Logistic and Freight Forwarding Agency:</strong> ${port["Transportation/Logistic and Freight Forwarding Agency"] || "N/A"}</p>
+    <p><strong>Name of Berths/SBM/SPM:</strong> ${port["Name of Berths/SBM/SPM:"] || "N/A"}</p>
+    <p><strong>Types of Berths/SBM/SPM:</strong> ${port["Types of Berths/SBM/SPM:"] || "N/A"}</p>
+    <p><strong>Navigation Aids:</strong> ${port["Navigation Aids:"] || "N/A"}</p>
+    <p><strong>Approach Routes:</strong> ${port["Approach Routes:"] || "N/A"}</p>
+    <p><strong>Navigational Hazards:</strong> ${port["Navigational Hazards:"] || "N/A"}</p>
+    <p><strong>Port Control Centre Contact:</strong> ${port["Port Control Centre Contact:"] || "N/A"}</p>
+    <p><strong>VHF Channels:</strong> ${port["VHF Channels:"] || "N/A"}</p>
+    <p><strong>Emergency Contact Details:</strong> ${port["Emergency Contact Details:"] || "N/A"}</p>
+    <p><strong>Anchorage Points:</strong> ${port["Anchorage Points:"] || "N/A"}</p>
+    <p><strong>Pilotage Facilities:</strong> ${port["pilotage Facilities:"] || "N/A"}</p>
+    <p><strong>Cranes:</strong> ${port["Cranes:"] || "N/A"}</p>
+    <p><strong>Forklifts:</strong> ${port["Forklifts:"] || "N/A"}</p>
+    <p><strong>Conveyor Belts:</strong> ${port["Conveyor Belts:"] || "N/A"}</p>
+    <p><strong>Open Storage Area:</strong> ${port["Open storage Area:"] || "N/A"}</p>
+    <p><strong>Covered Storage Facilities:</strong> ${port["Covered Storage Facilities:"] || "N/A"}</p>
+    <p><strong>Specialized Storage Facilities:</strong> ${port["Specialized Storage Facilities:"] || "N/A"}</p>
+    <p><strong>Road Connectivity:</strong> ${port["Road Connectivity:"] || "N/A"}</p>
+    <p><strong>Rail Connectivity:</strong> ${port["Rail Connectivity:"] || "N/A"}</p>
+</div>
               `;
-            });
-
-            document.getElementById("dataContainer").innerHTML = output;
-          })
-          .catch((error) => {
-            console.error("Error loading Excel file:", error);
           });
+
+          document.getElementById("dataContainer").innerHTML = output;
+        })
+        .catch((error) => {
+          console.error("Error loading Excel file:", error);
+        });
+    }
+
+    function toggleDetails(index) {
+      let details = document.getElementById(`details-${index}`);
+      let listItem = details.previousElementSibling;
+      let arrow = listItem.querySelector(".arrow");
+
+      if (details.style.display === "block") {
+        details.style.display = "none";
+        listItem.classList.remove("expanded");
+      } else {
+        details.style.display = "block";
+        listItem.classList.add("expanded");
       }
+    }
 
-      function toggleDetails(index) {
-        let details = document.getElementById(`details-${index}`);
-        let listItem = details.previousElementSibling;
-        let arrow = listItem.querySelector(".arrow");
+    const filePath = "Mandvi.xlsx";
+    loadExcelData(filePath);
+  </script>
+</body>
 
-        if (details.style.display === "block") {
-          details.style.display = "none";
-          listItem.classList.remove("expanded");
-        } else {
-          details.style.display = "block";
-          listItem.classList.add("expanded");
-        }
-      }
-
-      const filePath = "Mandvi.xlsx";
-      loadExcelData(filePath);
-    </script>
-  </body>
 </html>
