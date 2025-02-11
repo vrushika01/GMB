@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.port-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.port-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.port-item:hover {
+  background-color: #f0f8ff;
+  border-color: #007bff;
+}
+
+.port-item.expanded {
+  background-color: #e6f7ff;
+  border-color: #007bff;
+}
+
+.port-details {
+  display: none;
+  padding: 10px;
+  margin: 0 15px 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+
+.arrow {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when expanded */
+.expanded .arrow {
+  transform: rotate(90deg);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a6a6a6;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
