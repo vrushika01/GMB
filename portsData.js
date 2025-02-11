@@ -15,8 +15,7 @@ const portsData = {
             "ports": [
                 {
                     "name": "Mundra (MPSEZ)",
-                    "coordinates": [69.721329, 22.839520],
-                    "detailsPage": "Mundra (MPSEZ).html"
+                    "coordinates": [69.76328358160647, 22.802971075046585],                   
                 },
                 {
                     "name": "Jakhau",
@@ -61,7 +60,7 @@ const portsData = {
                 },
                 {
                     "name": "Shriji Shipping",
-                    "coordinates": [70.0757 ,22.48117 ],
+                    "coordinates": [69.89377117381923, 22.45703117215777],
                     "detailsPage": "Shriji Shipping.html"
                 }
             ]
@@ -124,7 +123,7 @@ const portsData = {
                 },
                 {
                     "name": "Mangrol",
-                    "coordinates": [70.12, 21.12 ],
+                    "coordinates": [ 70.0927874524499, 21.113040284107228],
                     "detailsPage": "mangrol.html"
                 },
                 {
@@ -146,6 +145,11 @@ const portsData = {
                 "coordinates": [71.3866, 20.8629]
             },
             "ports": [
+                {
+                    "name": "GMB Jetty",
+                    "coordinates": [ 71.36956876294889, 20.869971796068715],
+                    "detailsPage": "ultratech.html"
+                },
                 {
                     "name": "Ultratech Jetty(KOVAYA)",
                     "coordinates": [ 71.3721668 , 20.8682842],
@@ -170,6 +174,12 @@ const portsData = {
                 "coordinates": [72.2308, 21.7669]
             },
             "ports": [
+                {
+                    "name": "GMB",
+                    "coordinates": [72.2571061,21.5416659],
+                    "detailsPage": "Ghogha.html"
+                }
+                ,
                 {
                     "name": "Ghogha",
                     "coordinates": [72.282922, 21.677171],
@@ -197,7 +207,7 @@ const portsData = {
             "ports": [
                 {
                     "name": "Magdalla port ",
-                    "coordinates": [72.75201746293834,21.156197409213593],
+                    "coordinates": [72.62680806887975,21.09643594320052],
                     "detailsPage": "Magdalla port.html"
                 },
                 {
@@ -212,7 +222,7 @@ const portsData = {
                 },
                 {
                     "name": "Maroli",
-                    "coordinates": [72.8899466, 21.0243434],
+                    "coordinates": [72.73806982352691, 21.019462549934303],
                     "detailsPage": "Maroli.html"
                 },
                 {
@@ -222,7 +232,7 @@ const portsData = {
                 },
                 {
                     "name": "Bilimora",
-                    "coordinates": [72.9539, 20.7669],
+                    "coordinates": [72.6240541014055, 21.327580039271105],
                     "detailsPage": "Bilimora.html"
                 },
                 {
@@ -247,7 +257,7 @@ const portsData = {
                 },
                 {
                     "name": "Nargol",
-                    "coordinates": [72.78338076548859,20.243565815607447],
+                    "coordinates": [72.83624020930479,20.417737829813852],
                     "detailsPage": "Nargol.html"
                 }
             ]
@@ -266,7 +276,7 @@ const portsData = {
             "ports": [
                 {
                     "name": "Bhogat",
-                    "coordinates": [69.24156, 21.9924159],
+                    "coordinates": [69.20165098959284, 21.97593666909211],
                     "detailsPage": "bhogat.html"
                 },
                 {
@@ -333,3 +343,4 @@ const portsData = {
         }
     ]
 };
+
