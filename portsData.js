@@ -5,7 +5,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Mandvi Port group",
-                "info": "Mandvi, a fair weather lighterage port , is situated on the right bank of the river Rukmavati in the Gulf of kutch on the west coast of India.",
+                "info": "Mandvi, Mundra (Old), New Mundra (Adani Port Ltd), Jakhau, Koteshwar ",
                 "detailsPage":"mandvi.html"
             },
             "geometry": {
@@ -28,7 +28,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Navlakhi Port group",
-                "info": "Navlakhi is a all weather lighterage port situated on the south east end of Gulf of Kutch, on the wester coast of India.",
+                "info": "Navlakhi",
                 "detailsPage":"navlakhi.html"
             },
             "geometry": {
@@ -48,11 +48,11 @@ const portsData = {
                     "coordinates": [ 70.44406 , 22.95847],
                     "detailsPage": "Jaydeep.html"
                 },
-                // {
-                //     "name": "Chaugule",
-                //     "coordinates": [ , ],
-                //     "detailsPage": "Chaugule.html"
-                // },
+                {
+                    "name": "Chaugule",
+                    "coordinates": [70.354583,22.869665 ],
+                    "detailsPage": "Chaugule.html"
+                },
                 {
                     "name": "United Shippers ltd.",
                     "coordinates": [ 70.08113 ,22.5465 ],
@@ -69,7 +69,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Porbandar Port group",
-                "info": "Porbandar is an all weather port with direct berthing facilities. It is situated on the west coast of Saurashtra, facing the Arabian sea.",
+                "info": "Porbandar",
                 "detailsPage":"porbandar.html"
             },
             "geometry": {
@@ -93,7 +93,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Veraval Port group",
-                "info": "Veraval, a fair weather lighterage port is located in the South west coast of Saurashtra on the west coast of India.",
+                "info": "Veraval, Navabunder, Kotda, Madhvad, Mangrol, Muldwarka, Chhara ",
                 "detailsPage":"veraval.html"
             },
             "geometry": {
@@ -137,7 +137,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Jafrabad Port group",
-                "info": "Jafrabad is an all weather direct berthing port located inside Jafrabad creek in the Gulf of Cambay on the south coast of Saurashtra.",
+                "info": "Jafrabad, Pipavav (Victor), Port of Pipavav (GPPL), Rajpara. ",
                 "detailsPage":"jafrabad.html"
             },
             "geometry": {
@@ -166,7 +166,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Bhavnagar Port group",
-                "info": "Bhavnagar is an all weather berthing port for smaller vessels located in the Gulf of Cambay on the west coast of India.",
+                "info": " Bhavnagar, Ghogha and Talaja ",
                 "detailsPage":"bhavnagar.html"
             },
             "geometry": {
@@ -197,7 +197,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Magdalla Port group",
-                "info": "Magdalla is a lighterage port located on the west coast of India in southern Gujarat. It is located on the bank of river Tapi.",
+                "info": "Magdalla, Hazira, Umergoan, Maroli, Valsad, Billimora, Onjal, Kolak,  Umarsadi, VansiBorsi, Nargol. ",
                 "detailsPage":"magdalla.html"
             },
             "geometry": {
@@ -266,7 +266,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Okha Port group",
-                "info": "Okha is an all weather port with direct berthing facilities located on the north-west coast of Saurashtra Peninsula.",
+                "info": "Okha, Rupen, Bhogat, Beyt",
                 "detailsPage":"okha.html"
             },
             "geometry": {
@@ -295,7 +295,7 @@ const portsData = {
             "type": "Feature",
             "properties": {
                 "name": "Bharuch Port group",
-                "info": "Dahej is a fair weather lighterage port located at the junction of Guljaria and Ban Creek, on the west coast of the country, at Gulf of Cambay.",
+                "info": "Bharuch, Bhagwa, Dahej, Khambhat ",
                 "detailsPage":"dahej.html"
             },
             "geometry": {
@@ -343,4 +343,3 @@ const portsData = {
         }
     ]
 };
-
